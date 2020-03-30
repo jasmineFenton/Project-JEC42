@@ -144,7 +144,7 @@ export class Timesheets extends React.Component {
                         const index = data.indexOf(oldData);
                         data[index] = newData;
                         this.setState({ data }, () => resolve());
-                        reject(new Error("Something went wrong!"));
+                        reject(new Error("error has occured!"));
                       }
                       resolve();
                     }, 1000);
