@@ -117,7 +117,7 @@ export class Timesheets extends React.Component {
         },
         {
           name: "Jasmine Fenton",
-          task: "Finish product backlog view",
+          task: "Finish product backlog",
           day: "M",
           date: "2020-03-2020",
           start: "10:00AM",
