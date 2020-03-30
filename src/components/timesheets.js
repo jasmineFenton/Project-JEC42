@@ -74,6 +74,16 @@ export class Timesheets extends React.Component {
           field: "date"
         },
         {
+          title: "Start Time",
+          field: "start",
+          type: "string"
+        },
+        {
+          title: "End Time",
+          field: "end",
+          type: "string"
+        },
+        {
           title: "Actual Hours Worked",
           field: "hours",
           type: "Integer"
@@ -90,6 +100,8 @@ export class Timesheets extends React.Component {
           task: "Finish team dropdown list",
           day: "T",
           date: "2020-03-20",
+          start: "10:00AM",
+          end: "1:00PM",
           hours: 3,
           estimate: 3
         },
@@ -98,6 +110,8 @@ export class Timesheets extends React.Component {
           task: "Finish CRUD design and functionality of timesheet table",
           day: "M",
           date: "2020-03-2020",
+          start: "10:00AM",
+          end: "2:00PM",
           hours: 4,
           estimate: 3
         },
@@ -106,6 +120,8 @@ export class Timesheets extends React.Component {
           task: "Finish product backlog view",
           day: "M",
           date: "2020-03-2020",
+          start: "10:00AM",
+          end: "12:00PM",
           hours: 2,
           estimate: 2
         }
