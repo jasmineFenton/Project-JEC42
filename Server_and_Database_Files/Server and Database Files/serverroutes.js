@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const dbRtns = require("./setup");
+
 // define a default route to retrieve all alerts
 router.get("/", async (req, res) => {
   let conn;

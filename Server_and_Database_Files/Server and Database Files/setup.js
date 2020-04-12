@@ -4,6 +4,7 @@ let db;
 let results = "";
 let allProjects = [];
 let allMembers = [];
+
 const getProjects = async () => {
   try {
     allProjects = await dbLib.findAll(db, projectColl, {}, {});

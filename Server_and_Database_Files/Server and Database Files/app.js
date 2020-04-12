@@ -7,6 +7,8 @@ const graphqlHTTP = require("express-graphql");
 const app = express();
 const { resolvers } = require("./resolvers");
 const { schema } = require("./schema");
+
+//use page to load database
 app.use("/setup", myroutes);
 app.use(cors());
 app.use(
