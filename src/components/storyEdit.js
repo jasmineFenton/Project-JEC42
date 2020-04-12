@@ -43,7 +43,6 @@ const storyEdit = (props) => {
       <CardHeader>{story.taskName}</CardHeader>
       <CardText>
         <TextField>{story.taskDesc}</TextField>
-
         <Table>
           <TableHead>
             <TableRow>
