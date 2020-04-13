@@ -2,6 +2,7 @@ import React from "react";
 import MaterialTable from "material-table";
 import { Grid } from "@material-ui/core";
 import { forwardRef } from "react";
+//import Button from "@material-ui/core/Button";
 
 import AddCircleRoundedIcon from "@material-ui/icons/AddCircleRounded";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
@@ -17,6 +18,8 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
+import { NotificationManager } from "react-notifications";
+import PictureAsPdfIcon from "@material-ui/icons/PictureAsPdf";
 
 const tableIcons = {
   Add: forwardRef((props, ref) => (
@@ -43,148 +46,154 @@ const tableIcons = {
   ThirdStateCheck: forwardRef((props, ref) => (
     <DeleteIcon {...props} ref={ref} />
   )),
-  ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
+  ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
 };
 
-export class Timesheets extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      columns: [
-        { title: "Name", field: "name" },
-        {
-          title: "Task(s)",
-          field: "task",
-          firstEdit: "original edit value"
+const Timesheets = () => {
+  const [state, setState] = React.useState({
+    columns: [
+      { title: "Name", field: "name", type: "string" },
+      { title: "Task(s)", field: "task", type: "string" },
+      {
+        title: "Day",
+        field: "day",
+        type: "string",
+        lookup: {
+          Mon: "Monday",
+          Tues: "Tuesday",
+          Wed: "Wednesday",
+          Thurs: "Thursday",
+          Fri: "Friday",
         },
-        {
-          title: "Day",
-          field: "day",
-          type: "string",
-          lookup: {
-            M: "Monday",
-            T: "Tuesday",
-            W: "Wednesday",
-            T: "Thursday",
-            F: "Friday"
-          }
-        },
-        {
-          title: "Date",
-          field: "date"
-        },
-        {
-          title: "Start Time",
-          field: "start",
-          type: "string"
-        },
-        {
-          title: "End Time",
-          field: "end",
-          type: "string"
-        },
-        {
-          title: "Actual Hours Worked",
-          field: "hours",
-          type: "Integer"
-        },
-        {
-          title: "Estimated Hour(s) To Complete",
-          field: "estimate",
-          type: "Integer"
-        }
-      ],
-      data: [
-        {
-          name: "Charles Wearing",
-          task: "Finish team dropdown list",
-          day: "T",
-          date: "2020-03-20",
-          start: "10:00AM",
-          end: "1:00PM",
-          hours: 3,
-          estimate: 3
-        },
-        {
-          name: "Eloise Lin",
-          task: "Finish CRUD design and functionality of timesheet table",
-          day: "M",
-          date: "2020-03-2020",
-          start: "10:00AM",
-          end: "2:00PM",
-          hours: 4,
-          estimate: 3
-        },
-        {
-          name: "Jasmine Fenton",
-          task: "Finish product backlog",
-          day: "M",
-          date: "2020-03-2020",
-          start: "10:00AM",
-          end: "12:00PM",
-          hours: 2,
-          estimate: 2
-        }
-      ]
-    };
-  }
+      },
 
-  render() {
-    return (
-      <div style={{ maxWidth: "100%" }}>
-        <Grid container>
-          <Grid item xs={12}>
-            <MaterialTable
-              icons={tableIcons}
-              title="Timesheet"
-              columns={this.state.columns}
-              data={this.state.data}
-              editable={{
-                onRowAdd: newData =>
-                  new Promise((resolve, reject) => {
-                    setTimeout(() => {
-                      {
-                        const data = this.state.data;
-                        data.push(newData);
-                        this.setState({ data }, () => resolve());
-                        reject(new Error("Something went wrong!"));
-                      }
-                      resolve();
-                    }, 1000);
-                  }),
-                onRowUpdate: (newData, oldData) =>
-                  new Promise((resolve, reject) => {
-                    setTimeout(() => {
-                      {
-                        const data = this.state.data;
-                        const index = data.indexOf(oldData);
-                        data[index] = newData;
-                        this.setState({ data }, () => resolve());
-                        reject(new Error("error has occured!"));
-                      }
-                      resolve();
-                    }, 1000);
-                  }),
-                onRowDelete: oldData =>
-                  new Promise((resolve, reject) => {
-                    setTimeout(() => {
-                      {
-                        let data = this.state.data;
-                        const index = data.indexOf(oldData);
-                        data.splice(index, 1);
-                        this.setState({ data }, () => resolve());
-                        reject(new Error("Something went wrong!"));
-                      }
-                      resolve();
-                    }, 1000);
-                  })
-              }}
-            />
-          </Grid>
+      {
+        title: "Date",
+        field: "date",
+      },
+      {
+        title: "Start Time",
+        field: "start",
+        type: "string",
+      },
+      {
+        title: "End Time",
+        field: "end",
+        type: "string",
+      },
+      {
+        title: "Actual Hours Worked",
+        field: "hours",
+        type: "Integer",
+      },
+      {
+        title: "Estimated Hour(s) To Complete",
+        field: "estimate",
+        type: "Integer",
+      },
+    ],
+    data: [
+      {
+        name: "Charles Wearing",
+        task: "Finish team dropdown list",
+        day: "Tues",
+        date: "2020-03-20",
+        start: "10:00AM",
+        end: "1:00PM",
+        hours: 3,
+        estimate: 3,
+      },
+      {
+        name: "Eloise Lin",
+        task: "Finish CRUD design and functionality of timesheet table",
+        day: "Mon",
+        date: "2020-03-2020",
+        start: "10:00AM",
+        end: "2:00PM",
+        hours: 4,
+        estimate: 3,
+      },
+      {
+        name: "Jasmine Fenton",
+        task: "Finish product backlog",
+        day: "Mon",
+        date: "2020-03-2020",
+        start: "10:00AM",
+        end: "12:00PM",
+        hours: 2,
+        estimate: 2,
+      },
+    ],
+  });
+
+  return (
+    <div style={{ maxWidth: "100%" }}>
+      <Grid container>
+        <PictureAsPdfIcon
+          position="absolute"
+          vertical-align="text-bottom"
+          onClick={() => window.print()}
+        />
+        <Grid item xs={12}>
+          <MaterialTable
+            icons={tableIcons}
+            title=""
+            columns={state.columns}
+            data={state.data}
+            editable={{
+              onRowAdd: (newData) =>
+                new Promise((resolve) => {
+                  setTimeout(() => {
+                    resolve();
+                    setState((prevState) => {
+                      const data = [...prevState.data];
+                      data.push(newData);
+                      return { ...prevState, data };
+                    });
+                  }, 500);
+                  NotificationManager.success(
+                    "You have added a new entry!",
+                    "Entry Successful!"
+                  );
+                }),
+              onRowUpdate: (newData, oldData) =>
+                new Promise((resolve) => {
+                  setTimeout(() => {
+                    resolve();
+                    if (oldData) {
+                      setState((prevState) => {
+                        const data = [...prevState.data];
+                        data[data.indexOf(oldData)] = newData;
+                        return { ...prevState, data };
+                      });
+                    }
+                  }, 500);
+                  NotificationManager.success(
+                    "You have updated an entry!",
+                    "Entry Update Successful!"
+                  );
+                }),
+              onRowDelete: (oldData) =>
+                new Promise((resolve) => {
+                  setTimeout(() => {
+                    resolve();
+                    setState((prevState) => {
+                      const data = [...prevState.data];
+                      data.splice(data.indexOf(oldData), 1);
+                      return { ...prevState, data };
+                    });
+                  }, 500);
+                  NotificationManager.success(
+                    "You have deleted an new entry!",
+                    "Entry Delete Successful!"
+                  );
+                }),
+            }}
+          />
         </Grid>
-      </div>
-    );
-  }
-}
+      </Grid>
+    </div>
+  );
+};
 
 export default Timesheets;

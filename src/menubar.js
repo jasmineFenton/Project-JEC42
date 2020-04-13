@@ -1,7 +1,7 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
 import { Workspace } from "./components/workspace";
-import { Timesheets } from "./components/timesheets";
+import Timesheets from "./components/timesheets";
 import { Team } from "./components/team";
 import { Status } from "./components/status";
 import { Reports } from "./components/reports";
@@ -9,7 +9,7 @@ import { Backlog } from "./components/backlog";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-export default props => {
+export default (props) => {
   return (
     <Router>
       <menubar />

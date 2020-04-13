@@ -52,9 +52,9 @@ const storyEdit = (props) => {
           <TableBody>
             {story.subtasks.map((row) => (
               <TableRow key={row.id}>
-                <TableCell>{row}</TableCell>
-                <TableCell>{row}</TableCell>
-                <TableCell>{row}</TableCell>
+                <TableCell>{...row}</TableCell>
+                <TableCell>{...row}</TableCell>
+                <TableCell>{...row}</TableCell>
               </TableRow>
             ))}
           </TableBody>
