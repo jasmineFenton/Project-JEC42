@@ -6,7 +6,6 @@ import { Team } from "./components/team";
 import { Status } from "./components/status";
 import { Reports } from "./components/reports";
 import { Backlog } from "./components/backlog";
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 export default (props) => {

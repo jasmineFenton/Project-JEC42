@@ -10,9 +10,7 @@ function App() {
   return (
     <div id="App">
       <Notifications />
-      <div className="row">
-        <div className="content"></div>
-      </div>
+      <div className="row"></div>
       <MenuBar />
       <div></div>
       <NotificationContainer />
