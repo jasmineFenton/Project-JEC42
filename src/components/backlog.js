@@ -1,5 +1,6 @@
 import React from "react";
-const backlog = (props) => {
+
+export const backlog = (props) => {
   const initialState = {
     task: "",
   };
@@ -42,4 +43,5 @@ const backlog = (props) => {
     </div>
   );
 };
+
 export default backlog;

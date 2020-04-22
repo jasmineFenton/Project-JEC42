@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Reports = props => (
+export const Reports = (props) => (
   <div>
     <div class="centered">
       Team member reports and issues on the project go here..maybe implement a
@@ -8,3 +8,5 @@ export const Reports = props => (
     </div>
   </div>
 );
+
+export default Reports;

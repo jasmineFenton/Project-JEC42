@@ -1,11 +1,11 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
 import { Workspace } from "./components/workspace";
-import Timesheets from "./components/timesheets";
+import { Timesheets } from "./components/timesheets";
 import { Team } from "./components/team";
-import { Status } from "./components/status";
 import { Reports } from "./components/reports";
-import { Backlog } from "./components/backlog";
+import { Status } from "./components/status";
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 export default (props) => {
@@ -25,16 +25,16 @@ export default (props) => {
           Reports
         </a>
 
-        <a className="menu-item" href="/backlog">
+        {/* <a className="menu-item" href="/backlog">
           Project Backlog
-        </a>
+        </a> */}
 
         <a className="menu-item" href="/team">
           Project Team
         </a>
 
         <a className="menu-item" href="/status">
-          Portfolio Status
+          Refresh List
         </a>
       </Menu>
 
@@ -42,9 +42,8 @@ export default (props) => {
         <Route path="/workspace" component={Workspace} />
         <Route path="/timesheets" component={Timesheets} />
         <Route path="/team" component={Team} />
-        <Route path="/status" component={Status} />
         <Route path="/reports" component={Reports} />
-        <Route path="/backlog" component={Backlog} />
+        <Route path="/status" component={Status} />
       </Switch>
     </Router>
   );

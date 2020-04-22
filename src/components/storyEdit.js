@@ -1,6 +1,6 @@
 import React from "react";
 
-const storyEdit = (props) => {
+export const storyEdit = (props) => {
   const initialState = {
     story: "",
   };
@@ -63,4 +63,5 @@ const storyEdit = (props) => {
     </Card>
   );
 };
+
 export default storyEdit;

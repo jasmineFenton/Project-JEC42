@@ -47,7 +47,7 @@ const tableIcons = {
   ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
 };
 
-const Timesheets = () => {
+export const Timesheets = () => {
   const [state, setState] = React.useState({
     columns: [
       { title: "Name", field: "name", type: "string" },
